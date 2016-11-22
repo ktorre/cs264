@@ -1,0 +1,47 @@
+Script started on Thu 03 Nov 2016 02:52:50 PM PDT
+[01;32mkevin@Kevin[01;34m ~/programs/school/cs264/lab3 $[00m sipm[K[K[Kpm[Kim -file a[Klab3.s 
+SPIM Version 8.0 of January 8, 2010
+Copyright 1990-2010, James R. Larus.
+All Rights Reserved.
+See the file README for a full copyright notice.
+Loaded: /usr/lib/spim/exceptions.s
+
+Enter a string: palindrome
+
+Uppercase frequency   : 0
+Lowercase frequency   : 10
+Space frequency       : 0
+Other Letter Frequency: 0
+Is Palindrome         : False
+[01;32mkevin@Kevin[01;34m ~/programs/school/cs264/lab3 $[00m spim -file lab3.s 
+SPIM Version 8.0 of January 8, 2010
+Copyright 1990-2010, James R. Larus.
+All Rights Reserved.
+See the file README for a full copyright notice.
+Loaded: /usr/lib/spim/exceptions.s
+
+Enter a string: race    Racecar
+
+Uppercase frequency   : 1
+Lowercase frequency   : 6
+Space frequency       : 0
+Other Letter Frequency: 0
+Is Palindrome         : True
+[01;32mkevin@Kevin[01;34m ~/programs/school/cs264/lab3 $[00m spim -file lab3.s 
+SPIM Version 8.0 of January 8, 2010
+Copyright 1990-2010, James R. Larus.
+All Rights Reserved.
+See the file README for a full copyright notice.
+Loaded: /usr/lib/spim/exceptions.s
+
+Enter a string: hello world     wonderful world
+
+Uppercase frequency   : 0
+Lowercase frequency   : 19
+Space frequency       : 2
+Other Letter Frequency: 0
+Is Palindrome         : False
+[01;32mkevin@Kevin[01;34m ~/programs/school/cs264/lab3 $[00m exit
+exit
+
+Script done on Thu 03 Nov 2016 02:53:31 PM PDT
