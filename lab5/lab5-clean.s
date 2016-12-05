@@ -7,7 +7,7 @@
 # Records consist of 1 String ( 40 char max ), and 2 ints
 recordData:	.space	480	# 10 records, 48 bytes per record
 tmpRecord:	.space 48	# Used for swapping records
-numRecords:	.word 10	# For added flexibility
+numRecords:	.word 	4	# For added flexibility
 recordText:	.asciiz	"Record"
 namePrompt:	.asciiz	"Enter name: "
 agePrompt:	.asciiz	"Enter age: "

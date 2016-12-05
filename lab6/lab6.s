@@ -4,11 +4,11 @@
 # Project  : Lab 6 - Recursion and Stack
 
     .data
+intArray:   .space  20
 inputText:  .asciiz "Enter 5 integers: "
 inPrompt:   .asciiz ">> "
 newLine:    .asciiz "\n"
 smallText:  .asciiz "\nSmallest integer: "
-intArray:   .space  20
 
     .globl main
     .text
@@ -26,41 +26,39 @@ Min:
     # Purpose: Recursively find smallest number in array
 
     # Stack visual: |$ra|mid|high|min1| 4-bytes each
-    addiu $sp, $sp, -4
+    beq $a1, $a2, baseCase
+    la $a0, intArray
+    addiu $sp, $sp, -16
     sw $ra, 0( $sp )	    	# Store current address, will be overwritten when recursing so this step necessary
-    beq $a1, $a2, baseCase 
+    sw $a1, 4( $sp )
+    sw $a2, 8( $sp )
 
-    addiu $sp, $sp, -12		# Need to store mid in stack cause we'll lose it next callthrough
-    add $t0, $a1, $a2		# Calculate mid using a middle variable
-    sw $t0, 0( $sp )		# Need mid to call first min
+    add $a2, $a1, $a2		# Calculate mid using a middle variable
+    div $a2, $a2, 2
+    jal Min		# Min 1 = Min( int[] A, low, mid )
+    sw $v0, 12( $sp )	# Save result of first min cause $v0, gonna be overwritten and we'd lose min1
 
-    sw $a2, 4( $sp )	# Store high in stack, cause we overwrite in first min call
-    move $a2, $t0	# Set mid to high for min1
-    jal min		# Min 1 = Min( int[] A, low, mid )
-    sw $v0, 8( $sp )	# Save result of first min cause $v0, gonna be overwritten and we'd lose min1
-
-    lw $t0, 0( $sp )
-    addi $t0, $t0, 1
-    move $a1, $t0
-    lw $a2, 4( $sp )
-    jal min
+    lw $a1, 4( $sp )
+    addi $a1, $a1, 1
+    lw $a2, 8( $sp )
+    jal Min
     # After running second min, $v0 = min2
     
-    lw $t0, 8( $sp )	# $t0 = min1
+    lw $t0, 12( $sp )	# $t0 = min1
     bgt $t0, $v0, return
     move $v0, $t0
-    addiu $sp, $sp, 12
     b return
 
 
-
     baseCase:
-	li $v0, 1
-	b return
+	mul $t0, $a1, 4
+	add $t0, $t0, $a0
+	lw $v0, 0( $a0 )
+	jr $ra
 
     return:
 	lw $ra, 0( $sp )
-	addi $sp, $sp, 4
+	addiu $sp, $sp, 16
 	jr $ra
     
 getInput:
@@ -79,7 +77,7 @@ getInput:
 	syscall
 	li $v0, 5
 	syscall
-	move $sp, $v0
+	sw $v0, 0( $t0 )
 	addi $t0, $t0, 4
 	addi $t1, $t1, -1
 	bgtz $t1, inputLoop
