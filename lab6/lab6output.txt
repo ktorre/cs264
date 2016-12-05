@@ -1,0 +1,33 @@
+spim -file lab6.s
+Enter 5 integers: 
+>> 20
+>> 1
+>> 3
+>> 5
+>> 3
+
+Smallest integer: 1
+
+Enter N ( N > 0 ): 9
+
+Enter R ( R >= 0 & R < N ): 4
+
+Combination: 126
+
+spim -file lab6.s
+Enter 5 integers: 
+>> 8
+>> 14
+>> 27
+>> 4
+>> 58
+
+Smallest integer: 4
+
+Enter N ( N > 0 ): 20
+
+Enter R ( R >= 0 & R < N ): 4
+
+Combination: 4845
+
+
